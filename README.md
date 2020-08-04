@@ -36,7 +36,8 @@ I have then set the comments path for the Swagger JSON and UI in the startup cla
 The CreateProject action returns an HTTP 201 states code on success. An HTTP 400 states code is returned when the posted request body is null. 
 a 404 code when the System based on the SystemId could not be found and a 409 conflict code, In case Payload Containing Conflicting System / External ID,
 Well actually Without proper documentation in the Swagger UI, the consumer lacks knowledge of these expected outcomes. I have Fixed that problem by adding this lines:
- /// <response code="201">Returns the newly created item</response>
+
+     /// <response code="201">Returns the newly created item</response>
         /// <response code="400">If the dto is null or the ModelState is invalid</response> 
         /// <response code="404">If the SdlcSystem based on the SdlcSystemId could not be found</response> 
         /// <response code="409">In case Payload Containing Conflicting System / External ID</response> 
@@ -52,7 +53,7 @@ handling dependency Injection which is a technique for achieving Inversion of Co
 Well, of course the ASP.NET Core supports the dependency injection (DI) software design pattern. it's a framework-provided service registered by default by the framework.
 So all that we need to do is this lines in the Startup class:
 
-services.AddScoped(typeof(ISdlcSystemAppService), typeof(SdlcSystemAppService));
+            services.AddScoped(typeof(ISdlcSystemAppService), typeof(SdlcSystemAppService));
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
             services.AddScoped(typeof(IProjectAppService), typeof(ProjectAppService));
 
@@ -63,9 +64,7 @@ in the CreateProject method of the projectService class.
 
 As you can see, I have used the AutoMapper for mapping a project entity to a project dto class, as you know, It’s common to map a similar object to another object.
 
- It's also tedious and repetitive since generally both objects (classes) may have the same/similar properties mapped to each other. We can use a library to 
-
-automatically handle our mappings. AutoMapper is one of the best libraries for object to object mapping. You can see how I have configured it, in the MappingProfile
+ It's also tedious and repetitive since generally both objects (classes) may have the same/similar properties mapped to each other. We can use a library to automatically handle our mappings. AutoMapper is one of the best libraries for object to object mapping. You can see how I have configured it, in the MappingProfile
 
 class which can be find here in the Application project. In this class we can see that I have used the _projectRepository which you can find its implementation in
 Repositories folder in the EF Core project. It contains all necessary methods to deal with our database like Add and save and so on...
