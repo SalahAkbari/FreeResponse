@@ -6,20 +6,20 @@ As we now, the layering of an application's codebase is a widely accepted techni
 
 There are some fundamental layers in Domain Driven Design (DDD) which I have implemented as well:
 
-    Application Layer: mainly includes Application Services that use domain layer and domain objects (Domain Services, Entities...)
+ Application Layer: mainly includes Application Services that use domain layer and domain objects (Domain Services, Entities...)
  to perform requested application functionalities. In this solution I have considered the Application project for this purpose, it contains (DTOs,
  application services...) It uses Data Transfer Objects to get data from and return data to our API Controller.
  It can also deal with Logging, Object Mapping and so on...
     
-    Domain Layer: The domain layer usually Includes business objects and their rules. This is the heart of the application. I have considered the .Core project
+ Domain Layer: The domain layer usually Includes business objects and their rules. This is the heart of the application. I have considered the .Core project
 for this purpose, it includes Entities
 
 
-    EntityFramework project is for EF Core integration (abstracts EF Core from other layers).
+EntityFramework project is for EF Core integration (abstracts EF Core from other layers).
 
-   The Web.Host project which is our main rest controller API and finally two test projects:
+The Web.Host project which is our main rest controller API and finally two test projects:
 
-  FreeResponse.IntegrationTests  integration test including the web layer
+FreeResponse.IntegrationTests  integration test including the web layer
 and FreeResponse.Tests wich is used for unit tests
 
 
