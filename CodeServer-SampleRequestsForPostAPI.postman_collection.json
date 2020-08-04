@@ -1,0 +1,223 @@
+{
+	"info": {
+		"_postman_id": "0a78446f-8a83-4b20-b00c-0620c35a7dab",
+		"name": "CodeServer-SampleRequestsForPostAPI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Post - Full Payload - Expect 201 with Location header",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"externalId\": \"EXTERNALID9\",\r\n  \"name\": \"Name\",\r\n  \"sdlcSystemId\": 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:55379/api/v2/projects",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "55379",
+					"path": [
+						"api",
+						"v2",
+						"projects"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post - Minimal Payload - Expect 201 with Location header",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"externalId\": \"EXTERNALID10\",\r\n  \"sdlcSystemId\": 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:55379/api/v2/projects",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "55379",
+					"path": [
+						"api",
+						"v2",
+						"projects"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post - Payload Containing Illegal Value - Expect 400",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"sdlcSystemId\": \"Whatever\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:55379/api/v2/projects",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "55379",
+					"path": [
+						"api",
+						"v2",
+						"projects"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post - Payload Not Containing External ID - Expect 400",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"sdlcSystemId\": 40\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:55379/api/v2/projects",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "55379",
+					"path": [
+						"api",
+						"v2",
+						"projects"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post - Payload Not Containing System - Expect 400",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"externalId\": \"EXTERNALID69\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:55379/api/v2/projects",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "55379",
+					"path": [
+						"api",
+						"v2",
+						"projects"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post - Payload Containing Non Existing System - Expect 404",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"externalId\": \"EXTERNALID\",\r\n  \"sdlcSystemId\": 12345\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:55379/api/v2/projects",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "55379",
+					"path": [
+						"api",
+						"v2",
+						"projects"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post - Payload Containing Conflicting System / External ID - Expect 409",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"externalId\": \"SAMPLEPROJECT\",\r\n  \"sdlcSystemId\": 4\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:55379/api/v2/projects",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "55379",
+					"path": [
+						"api",
+						"v2",
+						"projects"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

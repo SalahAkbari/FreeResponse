@@ -1,0 +1,351 @@
+{
+	"info": {
+		"_postman_id": "7ded06ee-4078-4ddf-8a5b-d58d531e7152",
+		"name": "CodeServer-SampleRequestsForPatchAPI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Patch - Full Payload - Expect 200 with changed fields",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"externalId\": \"EXTERNALIDEDITED\",\r\n  \"name\": \"Name-Edited\",\r\n  \"sdlcSystemId\": 4\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:55379/api/v2/projects/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "55379",
+					"path": [
+						"api",
+						"v2",
+						"projects",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Patch - Payload with only externalId - Expect 200 and same name / system",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"externalId\": \"EXTERNALIDEDITED58\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:55379/api/v2/projects/6",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "55379",
+					"path": [
+						"api",
+						"v2",
+						"projects",
+						"6"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Patch - Payload with only sdlcSystem.id - Expect 200 and same name / externalId",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"sdlcSystemId\": 2\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:55379/api/v2/projects/6",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "55379",
+					"path": [
+						"api",
+						"v2",
+						"projects",
+						"6"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Patch - Empty Payload - Expect 200 with no changed fields",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:55379/api/v2/projects/6",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "55379",
+					"path": [
+						"api",
+						"v2",
+						"projects",
+						"6"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Patch - Payload Containing Illegal Value - Expect 400",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"sdlcSystemId\": \"Whatever\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:55379/api/v2/projects/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "55379",
+					"path": [
+						"api",
+						"v2",
+						"projects",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Patch - Payload Containing Non Existing System - Expect 404",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"sdlcSystemId\": 12345\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:55379/api/v2/projects/6",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "55379",
+					"path": [
+						"api",
+						"v2",
+						"projects",
+						"6"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Patch - Payload Containing Conflicting System - Expect 409",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"sdlcSystemId\": 5\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:55379/api/v2/projects/6",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "55379",
+					"path": [
+						"api",
+						"v2",
+						"projects",
+						"6"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Patch - Payload Containing Conflicting External ID - Expect 409",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"externalId\": \"EXTERNALIDEDITED58\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:55379/api/v2/projects/6",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "55379",
+					"path": [
+						"api",
+						"v2",
+						"projects",
+						"6"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Patch - Payload Containing Conflicting System / External ID - Expect 409",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"externalId\": \"EXTERNALIDEDITED58\",\r\n  \"sdlcSystemId\": 5\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:55379/api/v2/projects/6",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "55379",
+					"path": [
+						"api",
+						"v2",
+						"projects",
+						"6"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Patch - Illegal Path Variables - Expect 400",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:55379/api/v2/projects/whatever",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "55379",
+					"path": [
+						"api",
+						"v2",
+						"projects",
+						"whatever"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Patch - Invalid Path Variables - Expect 404",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:55379/api/v2/projects/1234",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "55379",
+					"path": [
+						"api",
+						"v2",
+						"projects",
+						"1234"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
